@@ -525,3 +525,37 @@ section[id]{ scroll-margin-top: 88px; }
   border-color:rgba(0,140,200,.22)!important;
   box-shadow:0 18px 48px rgba(0,130,180,.12);
 }
+
+/* 濃紺セクション内の h1（旧来から色指定が抜けていた） */
+.booking h1, .section-navy h1{ color:var(--white); }
+
+/* ===== variant:light-base — 白ベース（すらら公式サイト寄り） ===== */
+/* ヘッダーは常に白。どのページでも（濃紺セクションの上でも）読める */
+.nav{ background:rgba(255,255,255,.92); backdrop-filter:blur(10px); }
+.nav.scrolled{ background:rgba(255,255,255,.97); box-shadow:0 6px 24px rgba(6,43,69,.10); }
+.nav-logo{ color:#062B45; }
+.nav-logo .mark{ color:var(--sky-deep); }
+.nav-menu-toggle{ color:#062B45; border-color:rgba(6,43,69,.22); }
+.nav-menu-toggle .caret{ color:var(--sky-deep); }
+.nav-menu-toggle:hover, .nav-menu-toggle.is-open{ border-color:var(--sky-deep); background:rgba(0,157,225,.08); }
+.nav-cta{ border-color:var(--sky-deep); color:var(--sky-deep)!important; }
+.nav-cta:hover{ background:var(--sky-deep); color:#FFFFFF!important; }
+
+/* ヒーローを白〜淡いすららブルーに */
+.hero{ background:linear-gradient(165deg,#FFFFFF 0%, #EAF6FD 52%, #CFE9FA 100%); color:var(--ink); }
+.hero-glow{ background:radial-gradient(circle, rgba(0,157,225,.30) 0%, rgba(0,157,225,.06) 55%, transparent 70%); }
+.hero-kicker{ color:var(--sky-deep); }
+.hero h1{ color:#062B45; }
+.hero h1 .accent{ color:var(--sky-deep); }
+.hero p.lead{ color:var(--ink-soft); }
+.hero-side{ border-left-color:rgba(0,157,225,.30); }
+.hero-side-name{ color:var(--sky-deep); }
+.hero-side-role{ color:#062B45; }
+.hero-side-text{ color:var(--ink-soft); }
+.scroll-cue{ color:var(--ink-soft); }
+.scroll-cue .stick{ background:linear-gradient(var(--sky-deep), transparent); }
+.hero .btn-primary{ background:var(--sky-deep); color:#FFFFFF; }
+.hero .btn-primary:hover{ background:#0086C6; color:#FFFFFF; }
+.hero .btn-ghost{ border-color:rgba(6,43,69,.28); color:#062B45; }
+.hero .btn-ghost:hover{ border-color:var(--sky-deep); color:var(--sky-deep); }
+@media (max-width:860px){ .hero-side{ border-top-color:rgba(0,157,225,.30); } }
