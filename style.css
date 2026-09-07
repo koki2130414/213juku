@@ -559,3 +559,124 @@ section[id]{ scroll-margin-top: 88px; }
 .hero .btn-ghost{ border-color:rgba(6,43,69,.28); color:#062B45; }
 .hero .btn-ghost:hover{ border-color:var(--sky-deep); color:var(--sky-deep); }
 @media (max-width:860px){ .hero-side{ border-top-color:rgba(0,157,225,.30); } }
+
+/* =====================================================================
+   可読性・レスポンシブ整備（2026-09 監査対応）
+   ===================================================================== */
+
+/* --- 1. 小さな文字でも読める青へ ------------------------------------
+   #009DE1 は白地で 3.04:1 しかなく、13px前後の文字だと読みにくい。
+   ブランド青は装飾用に --sky-brand として残し、文字・ボタンには
+   同系統でコントラストの足りる --sky-deep(#0A72A8 = 5.3:1) を使う。 */
+:root{
+  --sky-brand:#009DE1;
+  --sky-deep:#0A72A8;
+}
+/* 濃色背景の中では逆に明るい水色に戻す（変数の再定義で子孫すべてに効く） */
+.section-navy, .booking, .page-hero, footer, .mvv-card.dark{ --sky-deep:var(--sky); }
+
+/* 装飾（線・アクセント）はブランド青のまま */
+.eyebrow::before{ background:var(--sky-brand); }
+.hero h1 .accent{ color:var(--sky-brand); }
+
+/* --- 2. 見えなくなっていた文字の修正 -------------------------------- */
+/* 表の見出し1列目が「濃紺の上に濃紺」で消えていた */
+.timetable thead th:first-child{ color:var(--white); }
+.timetable tbody td:first-child, .timetable tbody th:first-child{ color:var(--navy); }
+/* 濃紺セクション内の実績見出しが「濃紺の上に濃紺」で消えていた */
+.section-navy .results-block-head h3{ color:var(--white); }
+
+/* --- 3. 白抜き文字のコントラスト ------------------------------------ */
+.course-card.is-featured .tag{ color:var(--navy); }   /* オレンジ地は濃紺文字で 7.0:1 */
+.btn-line{ background:#00873D; }                       /* 白文字が読める濃さのLINEグリーン */
+.btn-line:hover{ background:#007032; }
+#ippo .btn-primary{ background:#007CB8; }
+#ippo .btn-primary:hover{ background:#00648F; }
+.footer-bottom{ color:#8FA6B5; }
+
+/* --- 4. 小さすぎる文字の下限を 11.5px に ----------------------------- */
+.footer-bottom{ font-size:11.5px; }
+@media (max-width:520px){
+  .nav-cta{ font-size:11.5px; padding:8px 12px; }
+  .nav-menu-toggle{ font-size:11.5px; }
+}
+
+/* --- 5. レスポンシブ改行ユーティリティ -------------------------------
+   <br class="br-pc"> … PC・タブレットだけで改行（スマホでは無視）
+   <br class="br-sp"> … スマホだけで改行（PCでは無視）             */
+.br-pc{ display:inline; }
+.br-sp{ display:none; }
+@media (max-width:767px){
+  .br-pc{ display:none; }
+  .br-sp{ display:inline; }
+}
+
+/* --- 6. 日本語の折り返しを自然に ------------------------------------
+   auto-phrase = 文節単位で折り返す / balance = 行長をそろえて
+   「最後の1文字だけ次の行」を防ぐ。                                */
+h1, h2, h3, h4,
+.section-title, .t-title, .news-title, .hero h1,
+.hero-side-role, .mvv-card h3, .course-card h3, .value-item h3,
+.director-name, .f-name, .footer-col h4{
+  word-break:auto-phrase;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+}
+p, li, dd, dt, .lead, .form-note, .hero p.lead{
+  word-break:auto-phrase;
+  text-wrap:pretty;
+  overflow-wrap:break-word;
+  line-break:strict;
+}
+
+/* --- 7. スマホでのタップ領域と余白 ----------------------------------- */
+@media (max-width:520px){
+  .btn{ padding:14px 24px; }
+  .cta-row .btn, .hero-cta-row .btn{ width:100%; justify-content:center; }
+}
+
+/* --- 8. スマホでメニューが画面外へはみ出して横スクロールしていた ----- */
+.nav-menu-dropdown{ max-width:calc(100vw - 28px); }
+@media (max-width:640px){
+  .nav-menu-dropdown{
+    position:fixed; left:14px; right:14px; width:auto; max-width:none;
+    top:68px; max-height:calc(100dvh - 96px);
+  }
+}
+/* 保険：どのページでも横スクロールを発生させない（clip は sticky を壊さない） */
+html, body{ overflow-x:clip; }
+
+/* --- 9. IPPO セクションは class 上は section-navy だが実際は淡色背景 --- */
+#ippo.section-navy{ --sky-deep:#075E88; --mist:#3E6C82; }
+
+/* --- 10. 表：スマホで「火/曜/日」のように縦積みになるのを防ぐ ---------
+   セル内は改行させず、収まらない場合だけ表ごと横スクロールさせる。 */
+.table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:8px; }
+.table-scroll .timetable{ box-shadow:none; }
+.table-scroll{ box-shadow:var(--shadow); border-radius:8px; }
+.timetable th, .timetable td{ white-space:nowrap; }
+.timetable td.wrap-ok{ white-space:normal; }
+@media (max-width:700px){
+  .timetable{ font-size:12.5px; }
+  .timetable th, .timetable td{ padding:12px 14px; }
+}
+/* 横に続きがあることを示すヒント */
+.table-hint{ display:none; font-size:12px; color:var(--ink-soft); margin-top:10px; letter-spacing:.04em; }
+@media (max-width:700px){ .table-hint{ display:block; } }
+
+/* --- 11. スマホでスクロール表示が本文に重なっていた ------------------- */
+@media (max-width:880px){ .scroll-cue{ display:none; } }
+
+/* --- 12. 氏名・時刻など「途中で切れると読めない」語の改行を止める ----- */
+.nowrap, .director-name .yomi, .timetable .en{ white-space:nowrap; }
+.director-name{ word-break:normal; overflow-wrap:normal; }
+
+/* --- 13. ギャラリーのカードを画像の高さに合わせる（下の余白を解消） --- */
+.voice-gallery-item{ align-self:start; }
+
+/* --- 14. 地図が読み込まれるまでの空白をなくす ------------------------- */
+.map-frame, .access-map, iframe[src*="google.com/maps"]{
+  background:var(--sky-pale-2);
+}
+/* 氏名と読みは、それぞれの内側では改行させず、あいだでだけ折り返す */
+.director-name, .staff-card h3, .news-title{ word-break:normal; overflow-wrap:normal; }

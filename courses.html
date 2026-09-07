@@ -17,7 +17,7 @@
   
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com; frame-src https://www.google.com; base-uri 'self'; form-action 'self' https://forms.gle; object-src 'none'; frame-ancestors 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com; frame-src https://www.google.com; base-uri 'self'; form-action 'self' https://forms.gle; object-src 'none';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
@@ -347,7 +347,7 @@
     </div>
 
     <div class="reveal show" style="overflow-x:auto; margin-top:60px;">
-      <table class="timetable">
+      <div class="table-scroll"><table class="timetable">
         <thead>
           <tr><th>曜日</th><th>時間</th><th>授業形式</th><th>内容</th></tr>
         </thead>
@@ -356,7 +356,8 @@
           <tr><td>水曜日</td><td>17:00-20:00</td><td>対面授業</td><td>教科学習</td></tr>
           <tr><td>木曜日</td><td>20:00-21:00</td><td>オンライン授業</td><td>メンタル講座＆目標設定（テスト前は進捗確認）</td></tr>
         </tbody>
-      </table>
+      </table></div>
+    <p class="table-hint">※ 表は横にスクロールできます。</p>
       <p class="form-note" style="margin-top:14px;">※ 学年・コースにより時間割の詳細は異なります。お子さまに合ったスケジュールは無料体験授業の際にご案内します。</p>
     </div>
   </div>
@@ -430,7 +431,7 @@
           <li>栃木県下野市上古山583-3</li>
           <li>TEL：0120-213-107</li>
           <li><a href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener">公式LINEを追加</a></li>
-          <li>受付：火 19:00〜21:00／水 17:00〜20:00</li>
+          <li>受付：<span class="nowrap">火 19:00〜21:00</span>／<span class="nowrap">水 17:00〜20:00</span></li>
         </ul>
       </div>
     </div>
