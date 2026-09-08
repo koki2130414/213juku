@@ -3,13 +3,25 @@
 <head>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-X5XPCWTXB6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-X5XPCWTXB6');
+  // 計測タグ(約100KB)はページの表示が終わってから読み込む。
+  // 計測内容は変わらず、送信のタイミングだけ後ろにずれる。
+  (function(){
+    var started = false;
+    function start(){
+      if (started) return; started = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-X5XPCWTXB6';
+      document.head.appendChild(s);
+    }
+    addEventListener('load', start);
+    addEventListener('pointerdown', start, {once:true});
+  })();
 </script>
 
 
@@ -25,6 +37,8 @@
 <meta name="description" content="にいみ塾の中学数学基礎・応用プログラムと、よくあるご質問をご紹介します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap"></noscript>
 <link rel="stylesheet" href="/style.css">
 <link rel="canonical" href="https://213juku.com/math-program.html">
 <meta property="og:type" content="website">
