@@ -679,3 +679,7 @@ html, body{ overflow-x:clip; }
 }
 /* 氏名と読みは、それぞれの内側では改行させず、あいだでだけ折り返す */
 .director-name, .staff-card h3, .news-title{ word-break:normal; overflow-wrap:normal; }
+
+/* --- 15. 濃紺セクション内の注記（色指定が抜けていた） ------------------ */
+.section-navy .form-note{ color:var(--mist); }
+.section-navy .form-note a{ color:var(--sky); }
