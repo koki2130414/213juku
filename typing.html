@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' 'sha256-X9gd1iZe+10vgWE/opWLhEFxF1RJtJeHcO3giRZIuho=' 'sha256-cOeNNO7HHTAsUVZZgu5exr+Lz3pUW31Os5l9SdAUvEY=' 'sha256-mpVKalMrUqmqkBNMfyFjPe5B3nl888P4eu+jjsFzXfQ=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src https://fonts.gstatic.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://www.google.com; manifest-src 'self'; media-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Google tag (gtag.js) -->
 <script>
@@ -27,18 +30,17 @@
 
 
   
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com; frame-src https://www.google.com; base-uri 'self'; form-action 'self' https://forms.gle; object-src 'none';">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
 
 <title>タイピング技能検定 イータイピング・マスター｜にいみ塾</title>
 <meta name="description" content="にいみ塾のタイピング技能検定講座。イータイピング・マスターでパソコンスキルを楽しく身につけます。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" media="print" onload="this.media='all'">
+<link id="gfont" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" media="print">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap"></noscript>
+<script>/* 非ブロッキングで読み込んだフォントCSSを、読み込み後に適用する */
+(function(){var l=document.getElementById('gfont');if(!l)return;function a(){l.media='all';}
+if(l.sheet){a();}else{l.addEventListener('load',a,{once:true});}})();</script>
 <link rel="stylesheet" href="/style.css">
 <link rel="canonical" href="https://213juku.com/typing.html">
 <meta property="og:type" content="website">
@@ -239,7 +241,7 @@
         </div>
       </div>
     </div>
-    <a class="nav-cta" href="https://forms.gle/a9BVAYhMRtRzPnXz8" target="_blank" rel="noopener">無料体験授業</a>
+    <a class="nav-cta" href="https://forms.gle/a9BVAYhMRtRzPnXz8" target="_blank" rel="noopener noreferrer">無料体験授業</a>
   </div>
 </nav>
 
@@ -262,7 +264,7 @@
 
       <div style="text-align:center; margin-top:36px; padding-top:30px; border-top:1px dashed var(--sky-pale-2);">
         <p style="color:var(--ink-soft); font-size:14px; margin-bottom:20px;">イータイピングの模擬テスト（無料）を試しに実施してみてください。</p>
-        <a class="btn btn-primary" href="https://web.e-typing.ne.jp/mock/" target="_blank" rel="noopener">無料模擬試験タイピングを受けてみる</a>
+        <a class="btn btn-primary" href="https://web.e-typing.ne.jp/mock/" target="_blank" rel="noopener noreferrer">無料模擬試験タイピングを受けてみる</a>
       </div>
     </div>
 
@@ -287,7 +289,7 @@
         </tbody>
       </table></div>
     <p class="table-hint">※ 表は横にスクロールできます。</p>
-      <p class="form-note" style="margin-top:14px; text-align:center;">スコア299以下の称号は<a href="https://www.e-typing.ne.jp/roma/check/" target="_blank" rel="noopener" style="color:var(--sky-deep); text-decoration:underline;">こちら</a>でご確認いただけます。</p>
+      <p class="form-note" style="margin-top:14px; text-align:center;">スコア299以下の称号は<a href="https://www.e-typing.ne.jp/roma/check/" target="_blank" rel="noopener noreferrer" style="color:var(--sky-deep); text-decoration:underline;">こちら</a>でご確認いただけます。</p>
     </div>
   </div>
 </section>
@@ -332,7 +334,7 @@
         <ul>
           <li>栃木県下野市上古山583-3</li>
           <li>TEL：0120-213-107</li>
-          <li><a href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener">公式LINEを追加</a></li>
+          <li><a href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener noreferrer">公式LINEを追加</a></li>
           <li>受付：<span class="nowrap">火 19:00〜21:00</span>／<span class="nowrap">水 17:00〜20:00</span></li>
         </ul>
       </div>

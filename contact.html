@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' 'sha256-X9gd1iZe+10vgWE/opWLhEFxF1RJtJeHcO3giRZIuho=' 'sha256-cOeNNO7HHTAsUVZZgu5exr+Lz3pUW31Os5l9SdAUvEY=' 'sha256-mpVKalMrUqmqkBNMfyFjPe5B3nl888P4eu+jjsFzXfQ=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src https://fonts.gstatic.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://www.google.com; manifest-src 'self'; media-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Google tag (gtag.js) -->
 <script>
@@ -27,18 +30,17 @@
 
 
   
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com; frame-src https://www.google.com; base-uri 'self'; form-action 'self' https://forms.gle; object-src 'none';">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
 
 <title>無料体験授業・お問い合わせ｜下野市の学習塾 にいみ塾</title>
 <meta name="description" content="にいみ塾へのお問い合わせ・無料体験授業のお申し込みはこちらから。お電話・公式LINE・フォームで承っています。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" media="print" onload="this.media='all'">
+<link id="gfont" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" media="print">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap"></noscript>
+<script>/* 非ブロッキングで読み込んだフォントCSSを、読み込み後に適用する */
+(function(){var l=document.getElementById('gfont');if(!l)return;function a(){l.media='all';}
+if(l.sheet){a();}else{l.addEventListener('load',a,{once:true});}})();</script>
 <link rel="stylesheet" href="/style.css">
 <link rel="canonical" href="https://213juku.com/contact.html">
 <meta property="og:type" content="website">
@@ -239,7 +241,7 @@
         </div>
       </div>
     </div>
-    <a class="nav-cta" href="https://forms.gle/a9BVAYhMRtRzPnXz8" target="_blank" rel="noopener">無料体験授業</a>
+    <a class="nav-cta" href="https://forms.gle/a9BVAYhMRtRzPnXz8" target="_blank" rel="noopener noreferrer">無料体験授業</a>
   </div>
 </nav>
 
@@ -249,8 +251,8 @@
     <h1 class="serif">まずは無料体験授業から。</h1>
     <p>実際の授業の雰囲気や講師との相性を、無料体験授業でぜひ確かめてください。<br>お申し込みは下記フォームより承っています。</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://forms.gle/a9BVAYhMRtRzPnXz8" target="_blank" rel="noopener">無料体験授業に申し込む</a>
-      <a class="btn btn-line" href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener">
+      <a class="btn btn-primary" href="https://forms.gle/a9BVAYhMRtRzPnXz8" target="_blank" rel="noopener noreferrer">無料体験授業に申し込む</a>
+      <a class="btn btn-line" href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.7 2 11.2c0 3.9 3.4 7.2 8 7.9-.1.6-.5 2.1-.6 2.4-.1.4.1.4.3.3.2-.1 2.6-1.7 3.6-2.4.9.1 1.8.2 2.7.2 5.52 0 10-3.7 10-8.2S17.52 3 12 3z"></path></svg>
         公式LINEを追加
       </a>
@@ -274,8 +276,8 @@
     <div class="reveal" style="text-align:center; background:var(--navy); border-radius:10px; padding:44px 32px; margin-bottom:44px; color:var(--white);">
       <p style="font-family:'Shippori Mincho',serif; font-size:19px; margin:0 0 20px;">無料体験授業のお申し込みはこちら</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://forms.gle/a9BVAYhMRtRzPnXz8" target="_blank" rel="noopener">無料体験授業 申し込みフォームへ</a>
-        <a class="btn btn-line" href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener">
+        <a class="btn btn-primary" href="https://forms.gle/a9BVAYhMRtRzPnXz8" target="_blank" rel="noopener noreferrer">無料体験授業 申し込みフォームへ</a>
+        <a class="btn btn-line" href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.7 2 11.2c0 3.9 3.4 7.2 8 7.9-.1.6-.5 2.1-.6 2.4-.1.4.1.4.3.3.2-.1 2.6-1.7 3.6-2.4.9.1 1.8.2 2.7.2 5.52 0 10-3.7 10-8.2S17.52 3 12 3z"></path></svg>
           公式LINEを追加
         </a>
@@ -290,7 +292,7 @@
       <div class="value-item">
         <h3>公式LINEでのお問い合わせ</h3>
         <p>友だち追加すると、チャット感覚でお気軽にご相談いただけます。</p>
-        <a href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; color:var(--sky-deep); font-size:13px; text-decoration:underline;">公式LINEを追加 →</a>
+        <a href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:10px; color:var(--sky-deep); font-size:13px; text-decoration:underline;">公式LINEを追加 →</a>
       </div>
       <div class="value-item">
         <h3>校舎への来校</h3>
@@ -339,7 +341,7 @@
         <ul>
           <li>栃木県下野市上古山583-3</li>
           <li>TEL：0120-213-107</li>
-          <li><a href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener">公式LINEを追加</a></li>
+          <li><a href="https://lin.ee/rNoAlZJ" target="_blank" rel="noopener noreferrer">公式LINEを追加</a></li>
           <li>受付：<span class="nowrap">火 19:00〜21:00</span>／<span class="nowrap">水 17:00〜20:00</span></li>
         </ul>
       </div>
