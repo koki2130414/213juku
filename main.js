@@ -106,26 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateFill();
   }
 
-  // --- お問い合わせフォーム(デモ用の送信ハンドラ) --------------------------
-  const contactForm = document.querySelector('#contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = '送信しました';
-      submitBtn.disabled = true;
-      contactForm.querySelectorAll('input, select, textarea').forEach(f => f.disabled = true);
-      const note = document.querySelector('#contact-form-note');
-      if (note) {
-        note.textContent = 'お問い合わせありがとうございます。担当者より2営業日以内にご連絡いたします。';
-        note.style.color = 'var(--sky-deep)';
-      }
-      setTimeout(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        contactForm.querySelectorAll('input, select, textarea').forEach(f => f.disabled = false);
-      }, 4000);
-    });
-  }
+  // お問い合わせはすべて Google フォーム・公式LINE・電話で受け付けており、
+  // サイト内に <form> は存在しない。以前ここにあったデモ用の送信ハンドラは、
+  // 実際には何も送信しないまま「送信しました」と表示する作りだったため削除した。
+  // 将来サイト内にフォームを置く場合は、送信先と完了表示を必ず実装すること。
 });

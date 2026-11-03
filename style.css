@@ -440,7 +440,7 @@ a.result-pill:hover{ background:var(--sky-pale); border-color:var(--sky); transf
 .staff-card .cred-pills{ margin-top:6px; }
 .staff-card .result-pill{ font-size:11.5px; padding:6px 12px; }
 .staff-card .director-more summary{ margin-top:10px; }
-.staff-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.staff-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:24px; }
 @media (max-width:860px){ .staff-grid{ grid-template-columns:1fr; } }
 
 /* ===== フッター ===== */
