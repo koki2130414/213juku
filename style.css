@@ -683,3 +683,33 @@ html, body{ overflow-x:clip; }
 /* --- 15. 濃紺セクション内の注記（色指定が抜けていた） ------------------ */
 .section-navy .form-note{ color:var(--mist); }
 .section-navy .form-note a{ color:var(--sky); }
+
+/* ------------------------------------------------------------------ */
+/* システムログイン一覧                                                */
+/* ------------------------------------------------------------------ */
+.login-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px; }
+.login-card{
+  display:flex; flex-direction:column; gap:6px;
+  padding:26px 24px; border-radius:8px;
+  background:var(--white); border:1px solid var(--sky-pale-2);
+  border-left:3px solid var(--sky);
+  box-shadow:var(--shadow);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.login-card:hover{ transform:translateY(-3px); box-shadow:0 14px 34px rgba(10,114,168,.18); border-left-color:var(--sky-deep); }
+.login-card:focus-visible{ outline:3px solid var(--sky-deep); outline-offset:3px; }
+.login-name{
+  font-family:'Shippori Mincho',serif; font-size:17.5px; font-weight:600;
+  color:var(--navy); line-height:1.5; word-break:auto-phrase;
+}
+.login-host{ font-size:11.5px; letter-spacing:.04em; color:#5C7686; word-break:break-all; }
+.login-go{
+  margin-top:8px; font-size:13px; font-weight:500; color:var(--sky-deep);
+  display:inline-flex; align-items:center; gap:6px;
+}
+.login-card:hover .login-go span{ transform:translateX(3px); }
+.login-go span{ transition:transform .25s ease; }
+@media (max-width:480px){
+  .login-grid{ grid-template-columns:1fr; gap:14px; }
+  .login-card{ padding:22px 20px; }
+}
