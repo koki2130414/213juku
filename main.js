@@ -1,6 +1,11 @@
 // ==========================================================================
 // にいみ塾 サイト共通スクリプト
 // ==========================================================================
+
+// 演出の初期状態（帯や行を隠す指定）は、このクラスが付いているときだけ効く。
+// JavaScriptが無効・読み込み失敗のときは何も隠れず、本文と導線がそのまま見える。
+document.documentElement.classList.add('js');
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // --- 喜びの声ギャラリーのライトボックス --------------------------------
@@ -105,6 +110,67 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateFill);
     updateFill();
   }
+
+  // --- 帯マスク見出し・行ごとの登場 --------------------------------------
+  // 画面に入った時点で一度だけ再生する。再生待ちで本文が読めなくならないよう、
+  // 画面より上にある要素（すでに通過した要素）は即座に表示済みにする。
+  const animEls = document.querySelectorAll('.band, .rise');
+  if (animEls.length) {
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      animEls.forEach(el => el.classList.add('in'));
+    } else {
+      // 帯は clip-path で幅がゼロになるため、帯そのものを監視すると
+      // 交差が検出されない。帯は親要素を見張り、親が入ったら中の帯を再生する。
+      const watchTargets = new Map(); // 監視する要素 → 再生する要素の配列
+      animEls.forEach(el => {
+        const watcher = el.classList.contains('band')
+          ? (el.closest('.band-lines') || el.parentElement || el)
+          : el;
+        if (!watchTargets.has(watcher)) watchTargets.set(watcher, []);
+        watchTargets.get(watcher).push(el);
+      });
+
+      const play = (watcher) => {
+        (watchTargets.get(watcher) || []).forEach(el => el.classList.add('in'));
+      };
+
+      const animIO = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // 素早くスクロールして一気に通り過ぎた要素も、隠れたままにしない
+          const passed = entry.boundingClientRect.bottom < 0;
+          if (entry.isIntersecting || passed) {
+            play(entry.target);
+            animIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+
+      watchTargets.forEach((_els, watcher) => {
+        // 初期表示で画面内にあるもの（ファーストビュー）はすぐ再生する
+        if (watcher.getBoundingClientRect().top < window.innerHeight) {
+          play(watcher);
+        } else {
+          animIO.observe(watcher);
+        }
+      });
+    }
+  }
+
+  // --- 横に流れる帯の停止・再開 -------------------------------------------
+  document.querySelectorAll('.marquee').forEach(mq => {
+    const btn = mq.querySelector('.mq-pause');
+    if (!btn) return;
+    // 動きを減らす設定のときは最初から止まっているので、ボタンは出さない
+    if (prefersReducedMotion) { btn.hidden = true; return; }
+    const setState = (paused) => {
+      mq.classList.toggle('is-paused', paused);
+      btn.setAttribute('aria-pressed', String(paused));
+      btn.setAttribute('aria-label', paused ? '流れる文字を再開する' : '流れる文字を停止する');
+      btn.textContent = paused ? '▶' : '❙❙';
+    };
+    setState(false);
+    btn.addEventListener('click', () => setState(!mq.classList.contains('is-paused')));
+  });
 
   // お問い合わせはすべて Google フォーム・公式LINE・電話で受け付けており、
   // サイト内に <form> は存在しない。以前ここにあったデモ用の送信ハンドラは、
