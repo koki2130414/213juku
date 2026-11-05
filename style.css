@@ -932,3 +932,164 @@ html.js .btn-primary:hover::after{ animation:sheen .75s var(--ease); }
 }
 .photo-strip img{ display:block; width:100%; height:auto; }
 .photo-strip figcaption{ padding:12px 16px; font-size:13px; color:var(--ink-soft); }
+
+/* =====================================================================
+   19. 画面幅ごとの作り分け（スマホ / タブレット / パソコン）
+   ---------------------------------------------------------------------
+   狙い
+   - 写真は元の解像度 406px を超えて引き伸ばさない。
+   - スマホは「縦に読む」、タブレットは「写真と説明を横に並べる」、
+     パソコンは「本文と写真を左右に置く」と、幅ごとに組み方を変える。
+   - 上部の余白を幅に応じて詰め、最初の画面で見出しとボタンに届かせる。
+   ===================================================================== */
+
+/* --- 写真は絶対に拡大しない ------------------------------------------- */
+.hero-photo{ max-width:406px; }
+.photo-strip figure{ max-width:406px; }
+
+/* --- ヒーローの写真と説明カードのまとまり ----------------------------- */
+.hero-media{ display:grid; gap:20px; }
+
+/* ▼ スマホ（〜640px）：縦に積む。上余白を詰めて見出しを早く見せる */
+@media (max-width:640px){
+  .hero{ padding:104px 0 56px; }
+  .hero .band{ font-size:clamp(24px,6.6vw,32px); }
+  .hero .band-sm{ font-size:clamp(18px,5vw,24px); }
+  .hero p.lead{ font-size:15px; line-height:1.95; }
+  .hero-cta-row{ margin-top:24px; gap:12px; }
+  .hero-media{ justify-items:center; gap:16px; }
+  .hero-photo, .hero-side{ width:100%; }
+  .hero-side{ margin-top:0; padding:20px; }
+  .marquee-group span{ font-size:12.5px; letter-spacing:.1em; }
+}
+@media (max-width:380px){
+  .hero{ padding:96px 0 48px; }
+  .hero .band{ font-size:23px; }
+  .hero .band-sm{ font-size:17.5px; }
+}
+
+/* ▼ タブレット（641〜1024px）：写真と説明カードを横に並べる
+      1カラムのまま写真だけ巨大化するのを防ぎ、横幅を活かす */
+@media (min-width:641px) and (max-width:1024px){
+  .hero{ padding:126px 0 72px; }
+  .hero-media{
+    grid-template-columns:minmax(0,406px) minmax(0,1fr);
+    align-items:start; gap:24px;
+  }
+  .hero-side{ margin-top:0; }
+  /* 既存CSSが880px以下でボタンを縦積み＋全幅にしているため、ここで横並びに戻す */
+  .hero-cta-row{ flex-direction:row; align-items:center; }
+  .hero-cta-row .btn{ flex:0 0 auto; width:auto; }
+  .hero p.lead{ max-width:40em; }
+}
+
+/* ▼ パソコン（1025px〜）：本文と写真を左右に。見出しをさらに大きく */
+@media (min-width:1025px){
+  .hero{ padding:150px 0 96px; }
+  .hero-grid{ align-items:center; gap:60px; }
+  .hero .band{ font-size:clamp(40px,3.9vw,56px); }
+  .hero .band-sm{ font-size:clamp(26px,2.5vw,36px); }
+  .hero-media{ justify-items:end; }
+  .hero-photo, .hero-side{ width:100%; max-width:406px; }
+}
+
+/* --- ボタンの幅：細い画面は全幅、そこから上は中身に合わせる ----------- */
+@media (max-width:520px){
+  /* 片手で押しやすいよう全幅（既存の指定と同じ考え方） */
+  .hero-cta-row .btn{ width:100%; justify-content:center; }
+}
+@media (min-width:521px) and (max-width:640px){
+  /* 横に間延びした長いボタンにしない */
+  .hero-cta-row{ flex-direction:row; align-items:center; flex-wrap:wrap; }
+  .hero-cta-row .btn{ flex:0 0 auto; width:auto; }
+}
+
+/* --- 横に流れる帯：停止ボタンに文字が潜り込まないようにする ------------ */
+.marquee::after{
+  content:""; position:absolute; right:0; top:0; bottom:0; width:96px;
+  background:linear-gradient(to right, rgba(6,43,69,0), var(--navy) 62%);
+  pointer-events:none; z-index:1;
+}
+.mq-pause{ z-index:2; }
+@media (max-width:520px){ .marquee::after{ width:64px; } }
+
+/* --- SCROLL の表示は広い画面だけ（狭い画面では帯と近すぎる） ---------- */
+@media (max-width:1024px){ .scroll-cue{ display:none; } }
+
+/* =====================================================================
+   20. タブレット（641〜1024px）で横幅を活かす
+   ---------------------------------------------------------------------
+   既存CSSは 860px 以下ですべてのカードを1列にしていたため、
+   タブレットで横が大きく余っていた。2列に組み直して密度を上げる。
+   スマホ（〜640px）は従来どおり1列のまま。
+   ===================================================================== */
+@media (min-width:641px) and (max-width:1024px){
+  .value-row,
+  .course-grid,
+  .mvv-top,
+  .staff-grid,
+  .access-grid{ grid-template-columns:repeat(2,1fr); gap:22px; }
+
+  .about-grid{ grid-template-columns:repeat(2,1fr); gap:36px; align-items:start; }
+  .footer-grid{ grid-template-columns:1fr 1fr; gap:32px; }
+
+  /* 3つ並びの最後の1枚が半端に残るのを防ぐ（奇数個のとき横いっぱいに） */
+  .value-row > *:last-child:nth-child(odd){ grid-column:1 / -1; }
+
+  section{ padding:96px 0; }
+  .section-head{ margin-bottom:44px; }
+}
+
+/* スマホでもカードの余白を詰めて、スクロール量を減らす */
+@media (max-width:640px){
+  section{ padding:76px 0; }
+  .section-head{ margin-bottom:34px; }
+  .value-row, .course-grid, .mvv-top{ gap:16px; }
+  .value-item{ padding:26px 22px; }
+  .mvv-card{ padding:30px 24px; }
+}
+
+/* =====================================================================
+   21. スマホでカードが画面からはみ出していた問題の修正
+   ---------------------------------------------------------------------
+   grid の子要素は既定で min-width:auto のため、中身（長い日本語の
+   ラベルなど）より小さく縮めず、親からはみ出して文字が切れていた。
+   html,body に overflow-x:clip があるため横スクロールは出ないが、
+   その分かえって読めなくなっていたので、縮められるようにする。
+   ===================================================================== */
+@media (max-width:640px){
+  .mvv-top > *,
+  .course-grid > *,
+  .value-row > *,
+  .staff-grid > *,
+  .about-grid > *,
+  .access-grid > *,
+  .login-grid > *,
+  .photo-strip > *{ min-width:0; }
+
+  /* 長いラベルは折り返して全部読めるようにする */
+  .mvv-num, .course-card .tag, .value-item h3, .mvv-card h3{
+    white-space:normal; word-break:normal; overflow-wrap:anywhere;
+  }
+
+  /* 内側の余白が大きすぎて本文の幅が足りなくなっていた */
+  .course-card{ padding:26px 20px; }
+}
+
+/* =====================================================================
+   22. IPPOページ：淡い水色背景での文字のコントラスト不足を解消
+   ---------------------------------------------------------------------
+   背景が #EAF8FF〜#BDE8FA と明るいのに、見出し補助の文字が
+   #008CC8（3.47:1）で WCAG AA の 4.5:1 に届いていなかった。
+   ===================================================================== */
+#ippo .eyebrow,
+#ippo [style*="color:var(--sky)"]{
+  color:#00719F!important;   /* 4.9:1 以上を確保 */
+}
+#ippo .eyebrow::before{ background:#00719F!important; }
+
+/* 引用の背景を不透明にして、下の濃いグラデーションが透けないようにする */
+#ippo .director-quote{
+  background:#F4FBFF!important;
+  color:#1E4255!important;
+}
