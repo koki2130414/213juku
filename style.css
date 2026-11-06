@@ -1093,3 +1093,67 @@ html.js .btn-primary:hover::after{ animation:sheen .75s var(--ease); }
   background:#F4FBFF!important;
   color:#1E4255!important;
 }
+
+/* ------------------------------------------------------------------ */
+/* 最強メンタルプログラム 紹介ページ                                   */
+/* ------------------------------------------------------------------ */
+.lead-box{
+  max-width:720px; margin:0 auto; text-align:center;
+  background:var(--white); border:var(--bd-soft); border-left:4px solid var(--sky-deep);
+  border-radius:var(--r-md); padding:30px 28px; box-shadow:var(--shadow);
+}
+.lead-box-title{ font-weight:700; color:var(--navy); font-size:17px; margin:0 0 10px; }
+.lead-box p{ color:var(--ink-soft); font-size:14.5px; margin:0 0 18px; }
+.lead-box .btn{ margin-top:4px; }
+
+/* 8つのプログラム */
+.prog-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.prog-card{
+  background:var(--white); border:var(--bd-soft); border-radius:var(--r-md);
+  padding:24px 20px; text-align:center;
+}
+.prog-num{
+  display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:700;
+  font-size:30px; line-height:1; color:var(--sky-deep); margin-bottom:8px;
+}
+.prog-card h3{ font-size:16.5px; margin:0; color:var(--navy); }
+@media (max-width:1024px){ .prog-grid{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:640px){ .prog-grid{ grid-template-columns:repeat(2,1fr); gap:12px; } .prog-card{ padding:18px 12px; } }
+
+/* 実践予定 */
+.schedule-box{
+  margin-top:34px; max-width:640px; margin-inline:auto;
+  background:var(--white); border:var(--bd-soft); border-radius:var(--r-md); padding:26px 28px;
+}
+.schedule-box h3{ font-size:17px; margin:0 0 16px; color:var(--navy); }
+.schedule-list{ margin:0; }
+.schedule-list > div{ display:flex; gap:18px; padding:11px 0; border-bottom:1px dashed var(--sky-pale-2); }
+.schedule-list > div:last-child{ border-bottom:none; }
+.schedule-list dt{ flex:none; width:4.5em; font-weight:600; color:var(--sky-deep); font-size:14.5px; }
+.schedule-list dd{ margin:0; font-size:14.5px; color:var(--ink); }
+
+/* 動画 */
+.video-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.video-card{ margin:0; border:var(--bd-soft); border-radius:var(--r-md); overflow:hidden; background:var(--white); }
+.video-frame{ position:relative; aspect-ratio:16/9; background:var(--navy); }
+.video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+.video-card figcaption{ padding:16px 18px; }
+.video-title{ display:block; font-weight:600; color:var(--navy); font-size:14.5px; margin-bottom:6px; }
+.video-note{ display:block; font-size:13px; color:var(--ink-soft); line-height:1.85; }
+@media (max-width:1024px){ .video-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .video-grid{ grid-template-columns:1fr; gap:16px; } }
+
+/* 実績 */
+.result-list{ list-style:none; margin:0 auto; padding:0; max-width:780px; }
+.result-list li{
+  display:grid; grid-template-columns:6em 1fr auto; gap:16px; align-items:baseline;
+  padding:16px 20px; background:var(--white); border:var(--bd-soft);
+  border-radius:var(--r-sm); margin-bottom:10px;
+}
+.res-year{ color:var(--sky-deep); font-size:13px; letter-spacing:.06em; }
+.res-title{ font-weight:600; color:var(--navy); font-size:15.5px; }
+.res-who{ font-size:13.5px; color:var(--ink-soft); text-align:right; }
+@media (max-width:640px){
+  .result-list li{ grid-template-columns:1fr; gap:4px; padding:14px 16px; }
+  .res-who{ text-align:left; }
+}
