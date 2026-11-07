@@ -1157,3 +1157,226 @@ html.js .btn-primary:hover::after{ animation:sheen .75s var(--ease); }
   .result-list li{ grid-template-columns:1fr; gap:4px; padding:14px 16px; }
   .res-who{ text-align:left; }
 }
+
+/* =====================================================================
+   23. すらら基調の明るいテーマ
+   ---------------------------------------------------------------------
+   黒に近い濃紺（#062B45 / #02141F など）をやめ、すららのロゴ3色
+   （水色 #009DE1・オレンジ #F5A200・ピンク #E9528E）を軸にした
+   明るい配色に差し替える。
+
+   読みやすさは落とさない。文字に使う色は「黒」ではなく深い青にして、
+   白背景でも 4.5:1 以上のコントラストを保つ。
+   ===================================================================== */
+:root{
+  /* 文字・枠線用。黒ではなく“すららの深い青”（白地で約7:1） */
+  --navy:#0E5C8A;
+  --navy-light:#1A79AD;
+  --navy-soft:#2A93C8;
+  --ink:#14506F;
+  --ink-soft:#3E7191;
+  --mist:#5C8AA6;
+
+  /* すららの3色 */
+  --sr-blue:#009DE1;
+  --sr-blue-deep:#0A7CB4;   /* 白文字をのせても 4.5:1 以上 */
+  --sr-orange:#F5A200;
+  --sr-orange-deep:#B86E00; /* 白地に置く文字用 */
+  --sr-pink:#E9528E;
+  --sr-pink-deep:#C32B68;   /* 白地に置く文字用 */
+
+  /* 背景 */
+  --sky-pale:#EBF8FE;
+  --sky-pale-2:#CDEBFA;
+  --cream:#FFF7EA;
+  --cream-2:#FFEFD6;
+  --shadow:0 18px 48px rgba(0,120,180,.14);
+}
+
+/* --- 濃紺で塗っていた面を、明るい水色のグラデーションにする --------- */
+.section-navy{
+  background:linear-gradient(180deg,#EAF8FF 0%, #D7F0FF 55%, #C3E9FB 100%);
+  color:var(--ink-soft);
+}
+.section-navy h2,.section-navy h3,.section-navy h1,
+.section-navy .results-block-head h3{ color:var(--navy); }
+.section-navy .section-head p,.section-navy p{ color:var(--ink-soft); }
+.section-navy .eyebrow{ color:var(--sr-blue-deep); }
+.section-navy .eyebrow::before{ background:var(--sr-blue-deep); }
+.section-navy .form-note{ color:var(--ink-soft); }
+.section-navy .mvv-card.dark{
+  background:var(--white); color:var(--ink-soft); border:1.5px solid var(--sky-pale-2);
+}
+.section-navy .mvv-card.dark h3{ color:var(--navy); }
+.section-navy .mvv-card.dark p{ color:var(--ink-soft); }
+.section-navy .mvv-card.dark .mvv-num{ color:var(--sr-blue-deep); }
+.section-navy .btn-ghost{ border-color:var(--sr-blue-deep); color:var(--sr-blue-deep); }
+.section-navy .btn-ghost:hover{ background:var(--sr-blue-deep); color:var(--white); }
+
+/* 申し込みセクションはオレンジ寄りの暖かい面にして、画面に抑揚をつける */
+.booking{
+  background:linear-gradient(135deg,#FFF4E2 0%, #FFE7C4 55%, #FFF1DC 100%);
+  color:var(--ink-soft);
+}
+.booking::before{ background:radial-gradient(circle, rgba(245,162,0,.16), transparent 70%); }
+.booking h1,.booking h2,.booking h3{ color:var(--navy); }
+.booking p{ color:var(--ink-soft); }
+.booking .eyebrow{ color:var(--sr-orange-deep); }
+.booking .eyebrow::before{ background:var(--sr-orange-deep); }
+.booking .btn-ghost{ border-color:var(--navy); color:var(--navy); }
+.booking .btn-ghost:hover{ background:var(--navy); color:var(--white); }
+
+/* 下層ページの小さいヒーローも明るく */
+.page-hero{
+  background:linear-gradient(140deg,#F2FBFF 0%, #DCF1FE 60%, #FFF3E2 100%);
+  color:var(--ink-soft);
+}
+.page-hero h1{ color:var(--navy); }
+.page-hero p{ color:var(--ink-soft); }
+.breadcrumb{ color:var(--ink-soft); }
+.breadcrumb a{ color:var(--sr-blue-deep); }
+
+/* --- フッター：黒に近い面をやめ、淡い水色に ------------------------- */
+footer{
+  background:linear-gradient(180deg,#E7F6FE 0%, #D5EEFB 100%);
+  color:var(--ink-soft);
+  border-top:3px solid var(--sr-blue);
+}
+footer .f-name{ color:var(--navy); }
+.footer-grid{ border-bottom:1px solid rgba(14,92,138,.18); }
+.footer-grid p{ color:var(--ink-soft); }
+.footer-col h4{ color:var(--navy); }
+.footer-col a{ color:var(--ink-soft); }
+.footer-col a:hover{ color:var(--sr-blue-deep); }
+.footer-bottom{ color:#4E7E99; }
+
+/* --- 帯見出し：すららブルーに白文字。強調語はオレンジ寄りの淡色 ----- */
+.band{ background:var(--sr-blue-deep); color:var(--white); }
+.band .hl{ color:#FFD88A; }
+.section-navy .band{ background:var(--sr-blue-deep); color:var(--white); }
+.section-navy .band .hl{ color:#FFD88A; }
+.booking .band{ background:var(--sr-orange-deep); color:var(--white); }
+.booking .band .hl{ color:#FFE9B8; }
+
+/* --- 横に流れる帯：すららブルー ------------------------------------- */
+.marquee{
+  background:var(--sr-blue-deep); color:var(--white);
+  border-top:none; border-bottom:none;
+}
+.marquee::after{ background:linear-gradient(to right, rgba(10,124,180,0), var(--sr-blue-deep) 62%); }
+.marquee-group span::after{ color:#FFD88A; }
+
+/* --- ヒーロー：白〜水色〜クリームの明るいグラデーション ------------- */
+.hero{ background:linear-gradient(145deg,#FFFFFF 0%, #E9F7FE 45%, #DCF0FD 72%, #FFF4E4 100%); }
+.hero-glow{ background:radial-gradient(circle, rgba(0,157,225,.22) 0%, rgba(245,162,0,.10) 55%, transparent 72%); }
+.hero-photo{ border-color:var(--sr-blue); background:var(--sky-pale); }
+.hero-photo figcaption{ background:linear-gradient(to top, rgba(10,124,180,.86), transparent); }
+.hero-side-name{ background:var(--sr-blue-deep); }
+
+/* --- ボタン：主役は水色、副役はオレンジ ----------------------------- */
+.btn-primary{ background:var(--sr-blue-deep); color:var(--white); }
+.btn-primary:hover{ background:#0A6A9B; color:var(--white); box-shadow:0 12px 30px rgba(0,157,225,.32); }
+.btn-navy{ background:var(--sr-orange-deep); color:var(--white); }
+.btn-navy:hover{ background:#9C5D00; }
+.btn-ghost{ border-color:var(--sr-blue-deep); color:var(--sr-blue-deep); }
+.btn-ghost:hover{ background:var(--sr-blue-deep); color:var(--white); border-color:var(--sr-blue-deep); }
+
+/* --- アクセントの色分け：セクションごとに表情を変える --------------- */
+.eyebrow{ color:var(--sr-blue-deep); }
+.section-cream .eyebrow{ color:var(--sr-orange-deep); }
+.section-cream .eyebrow::before{ background:var(--sr-orange-deep); }
+.section-cream .band{ background:var(--sr-orange-deep); }
+.section-cream .band .hl{ color:#FFE9B8; }
+.value-item{ border-top-color:var(--sr-blue); }
+.section-cream .value-item{ border-top-color:var(--sr-orange); }
+.prog-num{ color:var(--sr-orange-deep); }
+.step-num{ color:#FFDCA6; }
+.section-navy .step-num{ color:rgba(0,157,225,.26); }
+.res-year{ color:var(--sr-pink-deep); }
+.mvv-num{ color:var(--sr-pink-deep); }
+.lead-box{ border-left-color:var(--sr-orange); }
+.hero .lead-strong{ color:var(--sr-blue-deep); }
+
+/* 濃紺前提だった装飾面も明るく */
+.about-visual{ background:linear-gradient(155deg,#0A7CB4 0%, #00A3E5 55%, #46C4F0 130%); }
+.story-quote{ border-left-color:var(--sr-pink); }
+
+/* --- 23b. 濃い背景を前提にしていた文字色の手当て --------------------- */
+:root{
+  --sr-blue-deep:#0A6B9C;    /* 小さい文字でも 4.5:1 を満たす青 */
+  --sr-orange-deep:#8F5500;  /* 淡い背景に置くオレンジ系の文字 */
+  --sr-pink-deep:#AD1F58;    /* 淡い背景に置くピンク系の文字 */
+  --mist:#3F6880;            /* 補助テキスト。淡い水色の上でも読める */
+}
+/* ボタンの塗りは白文字が乗るので、文字色用より少し明るい値を使う */
+.btn-navy{ background:#A35F00; }
+.btn-navy:hover{ background:#8A4F00; }
+.btn-primary{ background:#0A7CB4; }
+.btn-primary:hover{ background:#0A6B9C; }
+
+/* 青いパネルの中だけは白文字のまま */
+.about-visual{ color:var(--white); }
+.about-visual .note-title{ color:var(--white); }
+.about-visual .note-line{ color:#EAF7FF; }
+.about-visual .note-line span.num{ color:#FFD88A; }
+.about-tag{ color:var(--white); border-color:rgba(255,255,255,.5); background:rgba(10,107,156,.45); }
+
+/* 以前は濃紺の上に白文字で置いていた小物 */
+.result-pill{ background:var(--white); color:var(--ink); border:1.5px solid var(--sky-pale-2); }
+.section-navy .result-pill{ color:var(--ink); }
+.booking a:not(.btn), .section-navy a:not(.btn){ color:var(--sr-blue-deep); }
+.booking .form-note, .section-navy .form-note{ color:var(--ink-soft); }
+.story-quote span{ color:var(--sr-pink-deep); }
+.footer-bottom{ color:#3F6880; }
+.scroll-cue span, .scroll-cue{ color:var(--sr-blue-deep); }
+.scroll-cue .stick{ background:var(--sr-blue-deep); }
+
+/* --- 23c. 残っていた読みにくい箇所の仕上げ --------------------------- */
+/* メニューのドロップダウンも白基調にする */
+.nav-menu-dropdown{
+  background:var(--white); border:1.5px solid var(--sky-pale-2);
+  box-shadow:0 24px 60px rgba(0,120,180,.22);
+}
+.nav-menu-dropdown a{ color:var(--ink); }
+.nav-menu-dropdown a:hover{ background:var(--sky-pale); color:var(--sr-blue-deep); }
+
+/* 青いパネルは濃さを確保して、中の白文字をはっきり読めるようにする */
+.about-visual{ background:linear-gradient(155deg,#0A6B9C 0%, #0A7CB4 55%, #1793CE 130%); }
+.about-visual-inner .note-line{ color:#FFFFFF; }
+.about-visual-inner .note-line span.num{ color:#FFE3A8; }
+.about-visual-inner .note-title{ color:#FFFFFF; }
+
+/* 写真キャプションは下地を濃くして白文字を確実に読ませる */
+.hero-photo{ background:#0A6B9C; }
+.hero-photo figcaption{ background:linear-gradient(to top, rgba(8,78,114,.92) 0%, rgba(8,78,114,.72) 55%, transparent 100%); }
+
+/* カード上の小さなラベル */
+.course-card .tag{ color:var(--sr-blue-deep); }
+.course-card.is-featured .tag{ color:#8F5500; }
+.mvv-num{ color:#9B1B4E; }
+
+/* 濃紺前提だった mvv-card.dark を、どのセクションでも白カードに */
+.mvv-card.dark{ background:var(--white); color:var(--ink-soft); border:1.5px solid var(--sky-pale-2); }
+.mvv-card.dark h3{ color:var(--navy); }
+.mvv-card.dark p{ color:var(--ink-soft); }
+.mvv-card.dark .mvv-num{ color:#9B1B4E; }
+
+/* 引用の署名 */
+.story-quote span, .story-quote > span{ color:#9B1B4E; }
+
+/* --- 23d. 残り3か所の仕上げ ------------------------------------------ */
+/* 引用パネルも明るく（白地＋ピンクの縦線） */
+.story-quote{
+  background:var(--white); color:var(--ink-soft);
+  border-left:5px solid var(--sr-pink); box-shadow:var(--shadow);
+}
+.story-quote::before{ color:rgba(233,82,142,.12); }
+.story-quote p{ color:var(--ink); }
+.story-quote span{ color:#9B1B4E; }
+
+/* オレンジ地のラベルは濃い茶色の文字で読ませる */
+.course-card.is-featured .tag{ color:#5A3600; }
+
+/* インラインで色指定された電話リンク（淡い背景になったため上書き） */
+.booking a[href^="tel:"]:not(.btn), .section-navy a[href^="tel:"]:not(.btn),
+.booking p a[style]:not(.btn), .section-navy p a[style]:not(.btn){ color:var(--sr-blue-deep)!important; }
