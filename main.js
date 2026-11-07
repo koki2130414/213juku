@@ -162,10 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!btn) return;
     // 動きを減らす設定のときは最初から止まっているので、ボタンは出さない
     if (prefersReducedMotion) { btn.hidden = true; return; }
+    // 文字の帯と写真の帯で、ボタンの読み上げ文言を変える
+    const noun = mq.classList.contains('marquee-photos') ? '写真' : '文字';
     const setState = (paused) => {
       mq.classList.toggle('is-paused', paused);
       btn.setAttribute('aria-pressed', String(paused));
-      btn.setAttribute('aria-label', paused ? '流れる文字を再開する' : '流れる文字を停止する');
+      btn.setAttribute('aria-label', paused ? '流れる' + noun + 'を再開する' : '流れる' + noun + 'を停止する');
       btn.textContent = paused ? '▶' : '❙❙';
     };
     setState(false);

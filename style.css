@@ -1380,3 +1380,83 @@ footer .f-name{ color:var(--navy); }
 /* インラインで色指定された電話リンク（淡い背景になったため上書き） */
 .booking a[href^="tel:"]:not(.btn), .section-navy a[href^="tel:"]:not(.btn),
 .booking p a[style]:not(.btn), .section-navy p a[style]:not(.btn){ color:var(--sr-blue-deep)!important; }
+
+/* =====================================================================
+   24. トップページ：横に流れる写真ギャラリー
+   ---------------------------------------------------------------------
+   狙い
+   - ファーストビューの直後に、教室と学習のようすを写真で見せる。
+   - 仕組みは「流れる文字の帯」と同じ .marquee を使い回す。
+     停止ボタンの処理は main.js の既存コードがそのまま効く。
+   - 写真は元の解像度（横 206〜400px）を超えて引き伸ばさない。
+     そのため表示の高さは 150px 前後にとどめている。
+   - 自動で動くのが苦手な方：停止ボタンに加えて、
+     「動きを減らす設定」とJS無効時は指でスクロールして見られるようにする。
+   ===================================================================== */
+
+/* 画面には出さず、読み上げにだけ渡す見出し */
+.sr-only{
+  position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+  overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0;
+}
+
+.marquee-photos{
+  background:linear-gradient(180deg, var(--sky-pale) 0%, #FFFFFF 100%);
+  color:var(--ink-soft);
+  border-top:1px solid var(--sky-pale-2);
+  border-bottom:1px solid var(--sky-pale-2);
+}
+/* 文字帯より写真は長いので、1周をゆっくりにする */
+html.js .marquee-photos .marquee-track{ animation-duration:72s; }
+
+.marquee-photos .marquee-group{ padding:18px 0; gap:14px; align-items:stretch; }
+
+.marquee-photos figure{
+  margin:0; flex:none; position:relative;
+  border:1.5px solid var(--sky-pale-2); border-radius:var(--r-md);
+  overflow:hidden; background:var(--white);
+  box-shadow:0 10px 26px rgba(0,120,180,.10);
+}
+.marquee-photos img{
+  display:block; height:150px; width:auto; max-width:none;
+  object-fit:cover;
+}
+.marquee-photos figcaption{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:16px 10px 7px;
+  font-size:12.5px; letter-spacing:.04em; color:var(--white);
+  background:linear-gradient(to top, rgba(8,78,114,.92) 0%, rgba(8,78,114,.70) 55%, transparent 100%);
+}
+
+/* 右端のぼかしは帯の下地と同じ色に合わせる */
+.marquee-photos::after{
+  background:linear-gradient(to right, rgba(255,255,255,0), #FFFFFF 70%);
+  width:72px;
+}
+/* 停止ボタンは淡い下地の上に置くので、青で塗って白い記号を読ませる */
+.marquee-photos .mq-pause{
+  background:var(--sr-blue-deep); border:1px solid rgba(255,255,255,.55);
+  color:var(--white); box-shadow:0 6px 18px rgba(0,120,180,.28);
+}
+.marquee-photos .mq-pause:hover{ background:#095F8B; }
+
+@media (max-width:640px){
+  .marquee-photos .marquee-group{ padding:14px 0; gap:10px; }
+  .marquee-photos img{ height:116px; }
+  .marquee-photos figcaption{ font-size:12px; padding:15px 8px 6px; }
+  .marquee-photos::after{ width:48px; }
+}
+@media (min-width:1025px){
+  .marquee-photos img{ height:176px; }
+}
+
+/* 動きが止まる場面では、指やマウスで横に送って全部見られるようにする */
+@media (prefers-reduced-motion: reduce){
+  .marquee-photos{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .marquee-photos .marquee-group[aria-hidden="true"]{ display:none; }
+}
+@media (scripting: none){
+  .marquee-photos{ overflow-x:auto; }
+  .marquee-photos .marquee-group[aria-hidden="true"]{ display:none; }
+  .marquee-photos .mq-pause{ display:none; }
+}

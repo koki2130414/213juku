@@ -275,6 +275,111 @@ if(l.sheet){a();}else{l.addEventListener('load',a,{once:true});}})();</script>
   <button type="button" class="mq-pause" aria-pressed="false" aria-label="流れる文字を停止する">❙❙</button>
 </div>
 
+<!-- 教室と学習のようす：横に流れる写真ギャラリー。
+     読み上げ用は1組だけ。2組目は切れ目なく流すための複製で、
+     aria-hidden と空の alt にして二重読み上げを防ぐ。 -->
+<div class="marquee marquee-photos">
+  <h2 class="sr-only">にいみ塾の教室と学習のようす</h2>
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <figure>
+        <img decoding="async" loading="lazy" width="286" height="283" src="/img/gal-01.webp" alt="にいみ塾の外観と看板">
+        <figcaption>教室の外観</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="288" height="216" src="/img/gal-02.webp" alt="にいみ塾 第1教室のパソコン席">
+        <figcaption>第1教室</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="289" height="217" src="/img/gal-03.webp" alt="すららで学習する生徒の様子">
+        <figcaption>学習の様子</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="372" height="283" src="/img/gal-04.webp" alt="にいみ塾の建物とのぼり旗">
+        <figcaption>教室の外観</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="288" height="216" src="/img/gal-05.webp" alt="にいみ塾 第1教室の机と椅子">
+        <figcaption>第1教室</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="289" height="217" src="/img/gal-06.webp" alt="パソコンですららの教材に取り組む様子">
+        <figcaption>すらら学習中</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="391" height="300" src="/img/gal-07.webp" alt="にいみ塾 第2教室のようす">
+        <figcaption>第2教室</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="289" height="217" src="/img/gal-08.webp" alt="ノートに書いて演習している様子">
+        <figcaption>ノート演習</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="206" height="283" src="/img/gal-09.webp" alt="にいみ塾の駐車場">
+        <figcaption>駐車場</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="290" height="216" src="/img/gal-10.webp" alt="にいみ塾 第1教室の奥側">
+        <figcaption>第1教室</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="289" height="217" src="/img/gal-11.webp" alt="モニターを見ながら学習する様子">
+        <figcaption>学習の様子</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="223" height="300" src="/img/gal-12.webp" alt="にいみ塾 教室へつづく廊下">
+        <figcaption>廊下</figcaption>
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="400" height="300" src="/img/gal-13.webp" alt="SBT（スーパーブレイントレーニング）講座のようす">
+        <figcaption>SBT講座</figcaption>
+      </figure>
+    </div>
+    <div class="marquee-group" aria-hidden="true">
+      <figure>
+        <img decoding="async" loading="lazy" width="286" height="283" src="/img/gal-01.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="288" height="216" src="/img/gal-02.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="289" height="217" src="/img/gal-03.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="372" height="283" src="/img/gal-04.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="288" height="216" src="/img/gal-05.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="289" height="217" src="/img/gal-06.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="391" height="300" src="/img/gal-07.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="289" height="217" src="/img/gal-08.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="206" height="283" src="/img/gal-09.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="290" height="216" src="/img/gal-10.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="289" height="217" src="/img/gal-11.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="223" height="300" src="/img/gal-12.webp" alt="">
+      </figure>
+      <figure>
+        <img decoding="async" loading="lazy" width="400" height="300" src="/img/gal-13.webp" alt="">
+      </figure>
+    </div>
+  </div>
+  <button type="button" class="mq-pause" aria-pressed="false" aria-label="流れる写真を停止する">❙❙</button>
+</div>
+
 
 
 <!-- こんなお悩みに -->
