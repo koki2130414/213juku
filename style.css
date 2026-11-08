@@ -1530,3 +1530,132 @@ html.js .marquee-photos .marquee-track{ animation-duration:72s; }
 .hero h1{ color:var(--navy); }
 .hero-side-role{ color:var(--navy); }
 .hero .btn-ghost{ border-color:rgba(14,92,138,.38); color:var(--navy); }
+
+/* ==================================================================
+ * 家族で営む4事業に共通するブランド表示（2026-11 追加）
+ * 既存の色・角丸・余白の変数をそのまま使っています。
+ * ================================================================== */
+
+/* ファーストビューの事業コピー */
+.hero-brand{
+  display:block;
+  margin-top:18px;
+  padding-left:14px;
+  border-left:4px solid var(--amber);
+}
+.hero-brand-main{
+  display:block;
+  font-weight:700;
+  font-size:1.05rem;
+  line-height:1.6;
+  color:var(--navy);
+}
+.hero-brand-sub{
+  display:block;
+  margin-top:4px;
+  font-size:.9rem;
+  line-height:1.8;
+  color:var(--ink-soft);
+}
+@media (min-width:768px){
+  .hero-brand-main{ font-size:1.18rem; }
+}
+
+/* フッターの合言葉 */
+.f-tagline{
+  margin-top:14px;
+  padding-left:12px;
+  border-left:4px solid var(--amber);
+  font-weight:700;
+  line-height:1.6;
+}
+
+/* 私たちについて／NIIMI FAMILY */
+.family-story{
+  max-width:720px;
+  margin:0 auto;
+}
+.family-story p{
+  margin:0 0 16px;
+  line-height:2;
+  color:var(--ink-soft);
+}
+.family-closing{
+  max-width:720px;
+  margin:28px auto 0;
+  padding:22px 24px;
+  border:var(--bd-soft);
+  border-radius:var(--r-lg);
+  background:var(--white);
+  text-align:center;
+  font-weight:700;
+  font-size:1.1rem;
+  line-height:1.9;
+  color:var(--navy);
+}
+.family-people{
+  display:grid;
+  gap:18px;
+  max-width:720px;
+  margin:36px auto 0;
+}
+@media (min-width:640px){
+  .family-people{ grid-template-columns:1fr 1fr; }
+}
+.family-person{
+  padding:24px 20px;
+  border:var(--bd-soft);
+  border-radius:var(--r-lg);
+  background:var(--white);
+  text-align:center;
+}
+.family-person img{
+  width:104px;
+  height:104px;
+  border-radius:999px;
+  object-fit:cover;
+  border:1px solid var(--line);
+}
+.family-name{ margin:14px 0 0; font-weight:700; font-size:1.1rem; color:var(--navy); }
+.family-kana{ margin:2px 0 0; font-size:.75rem; color:var(--ink-soft); }
+.family-role{ margin:10px 0 0; font-weight:700; font-size:.88rem; line-height:1.6; color:var(--sky-deep); }
+.family-note{ margin:10px 0 0; font-size:.88rem; line-height:1.8; color:var(--ink-soft); }
+
+.family-disclaimer{
+  max-width:720px;
+  margin:20px auto 0;
+  font-size:.85rem;
+  line-height:1.9;
+  color:var(--ink-soft);
+  text-align:center;
+}
+
+.family-sites{
+  display:grid;
+  gap:14px;
+  margin:40px auto 0;
+  max-width:980px;
+}
+@media (min-width:768px){
+  .family-sites{ grid-template-columns:repeat(3,1fr); }
+}
+.family-site{
+  display:block;
+  padding:20px;
+  border:var(--bd-soft);
+  border-radius:var(--r-md);
+  background:var(--white);
+  text-decoration:none;
+  transition:transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+@media (hover:hover){
+  .family-site:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(6,43,69,.12); }
+}
+.family-site-role{ display:block; font-size:.72rem; font-weight:700; color:var(--sky-deep); }
+.family-site-name{ display:block; margin-top:4px; font-weight:700; color:var(--navy); }
+.family-site-text{ display:block; margin-top:8px; font-size:.86rem; line-height:1.8; color:var(--ink-soft); }
+
+@media (prefers-reduced-motion: reduce){
+  .family-site{ transition:none; }
+  .family-site:hover{ transform:none; }
+}
