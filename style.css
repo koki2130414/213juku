@@ -1496,3 +1496,37 @@ html.js .marquee-photos .marquee-track{ animation-duration:72s; }
 @media (min-width:1025px){
   .footer-grid{ grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; }
 }
+
+/* =====================================================================
+   27. ご指摘いただいた3点の手直し
+   ---------------------------------------------------------------------
+   (1) 「Niimi Juku」「Surala」のラベルが、パネルの本文に重なっていた。
+       原因は aspect-ratio で高さを固定していたこと。中身の量に合わせて
+       高さが伸びるようにし、左下のラベル分の余白を確保する。
+   (2) 指で操作する端末で、タップ後に「ホバー中」の見た目が残り、
+       ボタンの文字が読みにくくなることがあった。
+   (3) 黒に近い残りの文字色（#062B45）を、すららの深い青に置き換える。
+   ===================================================================== */
+
+/* --- (1) パネルのラベルと本文の重なり --------------------------------- */
+.about-visual{
+  aspect-ratio:auto;      /* 高さを固定しない。中身が増えれば伸びる */
+  min-height:420px;
+  padding-bottom:88px;    /* 左下のラベルの居場所 */
+}
+@media (min-width:1025px){ .about-visual{ min-height:560px; } }
+@media (max-width:480px){ .about-visual{ min-height:360px; padding-bottom:84px; } }
+
+/* --- (2) タップ後にホバーの見た目を残さない --------------------------- */
+@media (hover:none){
+  .btn-ghost:hover{ background:transparent; color:var(--sr-blue-deep); }
+  .hero .btn-ghost:hover{ color:var(--navy); }
+  .is-tappable:hover{ transform:none; }
+}
+
+/* --- (3) 残っていた黒に近い文字色 ------------------------------------- */
+.nav-logo{ color:var(--navy); }
+.nav-menu-toggle{ color:var(--navy); border-color:rgba(14,92,138,.28); }
+.hero h1{ color:var(--navy); }
+.hero-side-role{ color:var(--navy); }
+.hero .btn-ghost{ border-color:rgba(14,92,138,.38); color:var(--navy); }
