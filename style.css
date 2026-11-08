@@ -1659,3 +1659,60 @@ html.js .marquee-photos .marquee-track{ animation-duration:72s; }
   .family-site{ transition:none; }
   .family-site:hover{ transform:none; }
 }
+
+/* =====================================================================
+   29. パソコンとスマホの表示ズレの手直し
+   ---------------------------------------------------------------------
+   320px〜1440px まで通しで確認して見つかった不具合を直す。
+   (1) 幅320〜360pxでナビが2段になり、先頭の見出しがナビの下に隠れていた
+   (2) ページ内リンクで飛んだとき、見出しがナビに隠れていた
+   (3) 幅320pxでニュースのカードと年表が右にはみ出していた
+   (4) 第1教室の写真が元の解像度(288px)を超えて引き伸ばされていた
+   (5) ナビのロゴと一部のリンクが、指で押すには小さかった
+   (6) 狭い画面で、流れる文字が停止ボタンの下を透けて通っていた
+   ===================================================================== */
+
+/* --- (2) ページ内リンクの着地位置。ナビの高さ分だけ余白をとる -------- */
+section[id], header[id], div[id]{ scroll-margin-top:96px; }
+
+/* --- (4) 写真は元の解像度を超えて引き伸ばさない ---------------------- */
+.photo-strip figure.is-narrow{ max-width:288px; }
+
+/* --- (5) ロゴの押せる範囲を広げる ------------------------------------ */
+.nav-logo{ min-height:44px; }
+
+/* --- (3) 狭い画面でカードの中身がはみ出すのを防ぐ -------------------- */
+@media (max-width:420px){
+  .news-card, .news-card > *, .news-body, .results-block-head,
+  .result-pills, .timeline, .t-item, .t-item > *{ min-width:0; }
+  .news-card{ padding:24px 18px; gap:22px; }
+  .result-pill{ white-space:normal; }
+  .t-item{ padding-left:52px; }
+  .results-block-head{ flex-wrap:wrap; }
+  /* 長いカタカナ語（例：スーパーブレイントレーニング）が折り返せず
+     はみ出すため、狭い画面でだけ途中で折り返せるようにする */
+  .results-block-head > *{ min-width:0; overflow-wrap:anywhere; }
+}
+
+/* --- (1) ナビが2段になる幅では、先頭の見出しをその分だけ下げる ------- */
+@media (max-width:360px){
+  body > section:first-of-type{ padding-top:152px; }
+  .page-hero{ padding-top:152px; }
+  section[id], header[id], div[id]{ scroll-margin-top:132px; }
+}
+
+/* --- (6) 流れる文字の帯：停止ボタンの下に文字が透けないように -------- */
+.marquee:not(.marquee-photos) .mq-pause{
+  background:#06557E; border:1px solid rgba(255,255,255,.55);
+}
+.marquee:not(.marquee-photos) .mq-pause:hover{ background:#044A6E; }
+@media (max-width:520px){
+  .marquee:not(.marquee-photos)::after{ width:92px; }
+}
+
+/* --- (5) 単独で置かれたリンクの押せる高さ ---------------------------- */
+@media (max-width:820px){
+  .result-school h4 a{ display:inline-block; padding:6px 0; }
+  .value-item > a[href]:not(.btn){ display:inline-block; padding:8px 0; }
+  .course-card a[href]:not(.btn){ display:inline-block; padding:4px 0; }
+}
