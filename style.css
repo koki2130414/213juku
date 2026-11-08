@@ -1460,3 +1460,39 @@ html.js .marquee-photos .marquee-track{ animation-duration:72s; }
   .marquee-photos .marquee-group[aria-hidden="true"]{ display:none; }
   .marquee-photos .mq-pause{ display:none; }
 }
+
+/* =====================================================================
+   25. 写真ギャラリーをページの一番上に置いたときの調整
+   ---------------------------------------------------------------------
+   ギャラリーがナビのすぐ下＝ページ最上部に来たので、
+   - 固定ナビに写真が隠れないよう、ナビの高さ分だけ上に余白をとる
+     （ナビの高さは 881px を境に 88px / 72px に変わるので、同じ境目で切替）
+   - 停止ボタンは余白ではなく写真の列に合わせて下寄せにする
+   - ファーストビューはもう先頭ではないので、上の余白を詰める
+   ===================================================================== */
+.marquee-photos{ padding-top:94px; }
+.marquee-photos .mq-pause{ top:auto; bottom:16px; transform:none; }
+.hero{ padding-top:64px; }
+
+@media (max-width:880px){
+  .marquee-photos{ padding-top:80px; }
+}
+@media (min-width:641px) and (max-width:1024px){
+  .hero{ padding-top:52px; }
+}
+@media (max-width:640px){
+  .marquee-photos .mq-pause{ bottom:12px; }
+  .hero{ padding-top:36px; }
+}
+@media (max-width:380px){
+  .hero{ padding-top:32px; }
+}
+
+/* =====================================================================
+   26. フッターに「関連サイト」の列が増えたときの並び
+   ---------------------------------------------------------------------
+   パソコンは4列。タブレット（2列）とスマホ（1列）は既存の指定のまま。
+   ===================================================================== */
+@media (min-width:1025px){
+  .footer-grid{ grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; }
+}
