@@ -1716,3 +1716,21 @@ section[id], header[id], div[id]{ scroll-margin-top:96px; }
   .value-item > a[href]:not(.btn){ display:inline-block; padding:8px 0; }
   .course-card a[href]:not(.btn){ display:inline-block; padding:4px 0; }
 }
+
+/* =====================================================================
+   30. 読む文章は左寄せにする
+   ---------------------------------------------------------------------
+   日本語の長い文章を中央寄せにすると、行の始まりの位置がそろわず
+   読みづらい。見出し・短いラベル・ボタンは中央のままにして、
+   2行以上になる説明文だけを左寄せに変える。
+   ===================================================================== */
+.section-head p,
+.family-disclaimer,
+.form-note,
+.lead-box{ text-align:left; }
+
+/* 1行で収まる短い言葉は中央のまま */
+.section-head .eyebrow,
+.section-head h1,
+.section-head h2,
+.section-head h3{ text-align:center; }
