@@ -1734,3 +1734,18 @@ section[id], header[id], div[id]{ scroll-margin-top:96px; }
 .section-head h1,
 .section-head h2,
 .section-head h3{ text-align:center; }
+
+/* =====================================================================
+   31. 家族紹介：お名前だけを載せるカード
+   ---------------------------------------------------------------------
+   写真と肩書きが未登録の方のカード。写真のあるカードと高さが
+   そろわないので、名前を上下の中央に置いて釣り合いをとる。
+   あとで写真や肩書きを足せるよう、クラスを外すだけで元の形に戻る。
+   ===================================================================== */
+.family-person-name-only{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:120px;
+}
+.family-person-name-only .family-name{ margin:0; }
