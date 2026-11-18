@@ -1749,3 +1749,18 @@ section[id], header[id], div[id]{ scroll-margin-top:96px; }
   min-height:120px;
 }
 .family-person-name-only .family-name{ margin:0; }
+
+/* =====================================================================
+   32. メニューの「システムログイン」だけを目立たせる
+   ---------------------------------------------------------------------
+   在塾生が毎回使う入口なので、一覧の中で一目で見つかるように
+   青で塗りつぶす。白文字とのコントラストは 5.4:1 で基準を満たす。
+   ===================================================================== */
+.nav-menu-dropdown a.is-login{
+  background:var(--sr-blue-deep);
+  color:var(--white);
+  font-weight:700;
+  box-shadow:0 4px 12px rgba(0,120,180,.28);
+}
+.nav-menu-dropdown a.is-login:hover{ background:#08587F; color:var(--white); }
+.nav-menu-dropdown a.is-login:focus-visible{ outline:3px solid var(--sr-blue); outline-offset:2px; }
